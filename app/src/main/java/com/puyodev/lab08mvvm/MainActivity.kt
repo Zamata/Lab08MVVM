@@ -78,6 +78,16 @@ fun TaskScreen(viewModel: TaskViewModel) {
 
 
         Spacer(modifier = Modifier.height(16.dp))
+        Row {
+            Button(onClick = { viewModel.sortTasksByName() }) {
+                Text("Ordenar por Nombre")
+            }
+
+            Button(onClick = { viewModel.sortTasksByDate() }) {
+                Text("Ordenar por Fecha")
+            }
+        }
+
 
 
         tasks.forEach { task ->
@@ -89,6 +99,10 @@ fun TaskScreen(viewModel: TaskViewModel) {
                 Button(onClick = { viewModel.toggleTaskCompletion(task) }) {
                     Text(if (task.isCompleted) "Completada" else "Pendiente")
                 }
+                Button(onClick = { viewModel.deleteTask(task) }) {
+                    Text("Eliminar")
+                }
+
             }
         }
 
@@ -101,3 +115,4 @@ fun TaskScreen(viewModel: TaskViewModel) {
         }
     }
 }
+
